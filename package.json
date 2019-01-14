@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/kgh940525/screendoor_project_server#readme",
   "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.3",
     "node": "^11.6.0"
   }
 }
