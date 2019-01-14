@@ -1,9 +1,12 @@
-var http = require('http');
+var express = require('express')
+const db = require('./database/db.js'); // db 불러오기
 
-var server = http.createServer(function (req, res) {
-    console.log("서버열려라")
-  res.writeHead(200, { 'Content-Type' : 'text/plain' });
-  res.end('Hello World');
+const app = express();
+
+const signin = require('./router/signin.js');
+app.use('/signin',signin)
+
+app.listen(3001, function(){
+	console.log('http://localhost:3001 connected');
+	db();
 });
-
-server.listen(8000);
