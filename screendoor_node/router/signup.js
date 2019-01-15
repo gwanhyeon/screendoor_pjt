@@ -16,6 +16,5 @@ router.post('/',urlencodedParser,(req,res) => {
   )(req,res)
 })
 
-
 module.exports = router;
 
