@@ -7,4 +7,5 @@ const userSchema = new mongoose.Schema({
   user_age: {type : Number, default:0},
   user_git_id: {type : String, default:""},
 });
+
 module.exports = mongoose.model('user',userSchema)
