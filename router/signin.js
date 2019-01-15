@@ -25,7 +25,9 @@ router.post('/',urlencodedParser, (req, res) => { // app 대신 router에 연결
   var user_id = req.body.user_id
   var user_password = req.body.user_password
 
-  user.find({ user_id: user_id, user_password:user_password}, (err, user) => {
+  user.find({ "user_id": user_id, "user_password":user_password}, (err, user) => {
+
+    console.log(user);
     if(err) {
         throw err;
     }
