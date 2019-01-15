@@ -20,8 +20,8 @@ app.use(passport.session());
 db();
 passportConfig(passport);
 
-app.use('/signup',signup)
-app.use('/signin',signin)
+app.use('/api/signup',signup)
+app.use('/api/signin',signin)
 
 
 app.listen(3001, function(){
