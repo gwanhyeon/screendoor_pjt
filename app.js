@@ -1,9 +1,18 @@
-var http = require('http');
+const express = require('express');
+const path = require('path');
+const app = express();
+const db = require('./database/db.js'); // db 불러오기
+const route = require('./router/signup');
 
-var server = http.createServer(function (req, res) {
-    console.log("서버열려라")
-  res.writeHead(200, { 'Content-Type' : 'text/plain' });
-  res.end('Hello World');
+
+// 실제로 사용할 경로 
+
+// app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'html'));
+db(); // 실행
+app.use(express.static(path.join(__dirname, 'html')));
+app.use('/', route);
+// 에러 처리 부분
+app.listen(8080, () => {
+  console.log('Express App on port 8080!');
 });
-
-server.listen(8000);

@@ -1,13 +1,21 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
-const user = require('../models/user');
-router.get('sign_up',function(req,res,next){
-    res.render('user/signup')
+//! 데이터 모델
+const User = require('../models/user.js');
+
+//! ROOT 경로
+router.get('/', (req, res) => {
+  res.render('main');
 });
+//! ABOUT
+router.get('/about', (req, res) => {
+  res.render('about');
+});
+//! 
+router.get('/:name', (req, res) => {
+  User.find({ name: req.params.name }, (err, user) => {
+    res.render('main', { user: user } );
+  });
+});
+module.exports = router;
 
-router.post('/sign_up',function(req,res,next){
-    res.send(`<h1>Sign up</h1>`);
-
-})
-
-export 
