@@ -1,3 +1,3 @@
 module.exports = {
-    'secret': 'this is nothing'
+    'secret': 'screendoor-node-react'
 }
