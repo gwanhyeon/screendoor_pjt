@@ -16,7 +16,6 @@ module.exports = (passport) => {
   passport.use('signin',new LocalStrategy({ // local 전략을 세움
     usernameField: 'user_id',
     passwordField: 'user_password',
-    session: true, // 세션에 저장 여부
     passReqToCallback: true,
   }, (req,user_id, user_password, done) => {
     User.find({ user_id: req.body.user_id, user_password:req.body.user_password }, (err, user) => {
@@ -35,7 +34,6 @@ module.exports = (passport) => {
   passport.use('signup',new LocalStrategy({ // local 전략을 세움
     usernameField: 'user_id',
     passwordField: 'user_password',
-    session: true, // 세션에 저장 여부
     passReqToCallback: true,},
     (req,user_id, user_password, done) => {
     User.findOne({"user_id":user_id}, (err,user) => {
