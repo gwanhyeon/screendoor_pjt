@@ -1,3 +1,3 @@
 module.exports = {
-    'secret': 'secret-key-screendoor'
+    'secret': 'this is nothing'
 }
