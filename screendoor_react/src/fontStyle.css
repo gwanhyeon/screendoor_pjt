@@ -1,0 +1,15 @@
+@font-face {
+    font-family: Gotham;
+    src: url("./fonts/Gotham\ Light\ Regular.otf") format("opentype");
+}
+
+a {
+    color: rgb(255,255,255);
+    font-family: Gotham;
+
+}
+a:hover{
+    color: gray;
+    font-family: Gotham;
+}
+    
