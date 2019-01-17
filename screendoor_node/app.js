@@ -20,6 +20,6 @@ app.use('/api/signup',signup)
 app.use('/authtest',authtest)
 db();
 passportConfig(passport);
-app.listen(3001, function(){
-	console.log('http://localhost:3001 connected');
+app.listen(3002, function(){
+	console.log('http://localhost:3002 connected');
 });
