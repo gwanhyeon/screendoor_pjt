@@ -85,6 +85,6 @@ typings/
 .dynamodb/
 
 # Session key config
-jwt/config.js
+screendoor_node/jwt/config.js
 
 # End of https://www.gitignore.io/api/node
