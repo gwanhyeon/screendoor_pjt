@@ -7,9 +7,6 @@ const jwt = require('jsonwebtoken');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.post('/',urlencodedParser,(req,res) => {
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
 
   passport.authenticate('signin', (err,user,info) =>{
     var error = err||info
