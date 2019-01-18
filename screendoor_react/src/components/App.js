@@ -2,9 +2,9 @@ import React from 'react'
 import NavigationBar from './NavigationBar'
 import SignupContainer from '../containers/SignupContainers'
 import { Container,Row,Col } from 'reactstrap'
-import mainbg from '../images/mainbg.png'
+import mainbg from '../images/mainbg_2.png'
 const margin = {
-    "margin-top": "110px"
+    "margin-top": "80px"
   }
 
 const App = () =>{
@@ -13,10 +13,10 @@ const App = () =>{
         <NavigationBar/>
         <Container fluid="true" className="bg-dark">
             <Row>
-                <Col xs="6">
+                <Col xs="4" style={{"margin-top":"10%","margin-left":"20%"}}>
                     <img src={mainbg}/>
                 </Col>
-                <Col xs="5" style={margin}>
+                <Col xs="3" style={margin}>
                     <SignupContainer/>
                 </Col>
             </Row>

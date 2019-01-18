@@ -4,24 +4,24 @@ export default class SignupChildren extends Component {
   render() {
     return (
     <form action="api/signup" method="POST">
-        <div class="form-group">
+        <div className="form-group">
           <label for="user_id">ID</label>
-          <input type="text" id="user_id" class="form-control" name="user_id" placeholder="Enter ID"/>
+          <input type="text" id="user_id" className="form-control" name="user_id" placeholder="Enter ID"/>
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="user_password">Password</label>
-          <input type="password" class="form-control" name="user_password" aria-describedby="passwordHelp" id="user_password" placeholder="Password"/>
-          <small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+          <input type="password" className="form-control" name="user_password" id="user_password" placeholder="Enter Password"/>
         </div>
-        <div class="form-group">
-          <label for="user_age">age</label>
-          <input type="text" class="form-control" name="user_age" id="user_age" placeholder="age"/>
+        <div className="form-group">
+          <label for="user_age">Age</label>
+          <input type="text" className="form-control" name="user_age" id="user_age" placeholder="Enter your age"/>
         </div>
-        <div class="form-group">
-          <label for="user_git_id">github id</label>
-          <input type="text" class="form-control" name="user_git_id" id="user_git_id" placeholder="git id"/>
+        <div className="form-group">
+          <label for="user_git_id">Github</label>
+          <input type="text" className="form-control" name="user_git_id" id="user_git_id" aria-describedby="signUpHelp" placeholder="Enter your git id"/>
+          <small id="signUpHelp" className="form-text text-muted">We'll never share your account with anyone else.</small>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" className="btn btn-success">Submit</button>
       </form>
     )
   }
