@@ -27,7 +27,8 @@ class SigninModal extends Component {
         })
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         const {user_id, user_password} = this.state
         const user = {
             user_id: user_id,
