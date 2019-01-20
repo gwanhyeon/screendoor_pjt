@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../images/logo.png'
-import SigninModal from './SigninModal'
+import SigninContainer from '../containers/SigninContainers'
 import * as Gotham from '../fontStyle.css'
 
 
@@ -18,7 +18,7 @@ const NavigationBar = () => {
                     <a style={Gotham} className="nav-item nav-link" href="#">Home</a>
                     <a style={Gotham} className="nav-item nav-link" href="#">Features</a>
                     <a style={Gotham} className="nav-item nav-link" href="#">Pricing</a>
-                    <a style={Gotham} className="nav-item nav-link nav-light" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a style={Gotham} className="nav-item nav-link nav-light" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
                 </div>
             </div>
             <form className="form-inline">
@@ -26,7 +26,7 @@ const NavigationBar = () => {
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>{' '}
             </form>
             &nbsp;
-            <SigninModal/>
+            <SigninContainer/>
             </div>
         </nav>
     )
