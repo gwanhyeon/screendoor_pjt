@@ -2,43 +2,74 @@ import React,{ Component } from 'react';
 import { Button, Modal, Input, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class SigninModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
 
-    this.handleOnClick = this.handleOnClick.bind(this);
-  }
+    constructor() {
+        super();
+        this.state = {
+            user_id:'',
+            user_password:'',
+            response:'',
+            modal:false
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-  handleOnClick() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
+    handleOnClick = () => {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const {user_id, user_password} = this.state
+        const user = {
+            user_id: user_id,
+            user_password: user_password,
+        }
+
+        this.setState({
+            ...user,
+        })
+        this.handleOnClick();
+        //current user리듀서 사용해서 response에 있는 jwt값 스토어에 업데이트
+        //나중에 여기다가 node 연결 넣으면됨
+        console.log(this.state);
+    }
+
+
+
 
   render() {
+    const { handleChange, handleOnClick,handleSubmit, state } = this;
     return (
       <div>
-        <Button color="success" onClick={this.handleOnClick}>Sing in</Button>
-        <Modal isOpen={this.state.modal} toggle={this.handleOnClick} className="modal-dialog">
+        <Button color="success" onClick={handleOnClick}>Sing in</Button>
+        <Modal isOpen={state.modal} toggle={handleOnClick} className="modal-dialog">
+        <form onSubmit={handleSubmit}>
           <ModalHeader toggle={this.handleOnClick}>Sign in</ModalHeader>
           <ModalBody>
-          <Form>
             <FormGroup>
                 <Label for="exampleEmail">ID</Label>
-                <Input type="email" name="user_id" placeholder="Enter ID" />
+                <Input type="text" value={state.user_id} name="user_id" placeholder="Enter ID" onChange={ handleChange } />
             </FormGroup>
             <FormGroup>
                 <Label for="examplePassword">Password</Label>
-                <Input type="password" name="user_password" placeholder="Enter Password" />
+                <Input type="password" value={state.user_password} name="user_password" placeholder="Enter Password" onChange={handleChange} />
             </FormGroup>
-          </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={this.handleOnClick}>Sign in</Button>{' '}
-            <Button color="secondary" onClick={this.handleOnClick}>Cancel</Button>
+            <Button type="submit" color="success">Sign in</Button>{' '}
+            <Button color="secondary" onClick={handleOnClick}>Cancel</Button>
           </ModalFooter>
+          </form>
         </Modal>
       </div>
     );
