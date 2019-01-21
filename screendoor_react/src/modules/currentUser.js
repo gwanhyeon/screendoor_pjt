@@ -14,4 +14,4 @@ export default handleActions({
     [SET_CURRENT_USER]: (state,action) => {
         return state.set('user_id',action.payload.user_id).set('token',action.payload.user_id)
     }
-})
+},initialState)
