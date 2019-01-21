@@ -9,7 +9,6 @@ class SigninContainers extends Component {
     handleChange = (e) => {
         const {signinActions} = this.props;
         signinActions.setSignInUser({'property':e.target.name,'value':e.target.value})
-        console.log(e.target.value)
     }
     
     
