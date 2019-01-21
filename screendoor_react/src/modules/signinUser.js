@@ -12,6 +12,7 @@ const initialState = Map({
 
 export default handleActions({
     [SET_SIGNIN_USER]: (state,action) => {
-        return state.set('user_id',action.payload.user_id).set('user_password',action.payload.user_password)
+        const {property, value} = action.payload;
+        return state.set(property,value)
     }
 },initialState)
