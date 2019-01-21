@@ -38,10 +38,10 @@ class SigninModal extends Component {
         this.setState({
             ...user,
         })
-        this.handleOnClick();
         //current user리듀서 사용해서 response에 있는 jwt값 스토어에 업데이트
         //나중에 여기다가 node 연결 넣으면됨
         console.log(this.state);
+        this.handleOnClick();
     }
 
 
