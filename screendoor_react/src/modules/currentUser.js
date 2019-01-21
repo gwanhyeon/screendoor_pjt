@@ -1,7 +1,7 @@
 import {Map} from 'immutable';
 import {handleActions, createAction} from 'redux-actions'
 
-const SET_CURRENT_USER = 'currentUser/CURRENT_USER';
+const SET_CURRENT_USER = 'currentUser/SET_CURRENT_USER';
 
 export const setCurrentUser = createAction(SET_CURRENT_USER);
 
