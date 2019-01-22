@@ -14,13 +14,7 @@ class SigninContainers extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        const {user_id, user_password} = this.props
-        const user = {
-            user_id: user_id,
-            user_password: user_password,
-        }
-        //나중에 여기다가 node 연결하는 리듀서 만들어서 넣으면됨
-        console.log(this.props);
+        signinActions.postSignInUser();
     }
 
   render() {

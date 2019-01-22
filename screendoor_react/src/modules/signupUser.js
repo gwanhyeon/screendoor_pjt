@@ -10,6 +10,7 @@ const initialState = Map({
     user_password:'',
     user_age:'',
     user_git_id:'',
+    response:''
 })
 
 export default handleActions({
