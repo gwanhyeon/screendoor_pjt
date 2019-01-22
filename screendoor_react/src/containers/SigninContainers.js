@@ -29,7 +29,8 @@ class SigninContainers extends Component {
             body: JSON.stringify(user),
           });
           const body = await response.json();
-        userActions.setCurrentUser(body);
+          userActions.setCurrentUser(body);
+
     }
 
   render() {

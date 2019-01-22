@@ -30,7 +30,6 @@ class SignupContainers extends Component {
         body: JSON.stringify(user),
       });
       const body = await response.json();
-    console.log(body)
 }
  
   render() {

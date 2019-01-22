@@ -1,10 +1,10 @@
 import React,{ Component } from 'react';
-import { Button, Modal, Input, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Alert, Button, Modal, Input, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class SigninModal extends Component {
 
     state ={
-        modal:false
+        modal:false,
     }
 
     handleOnClick = () => {
@@ -12,10 +12,10 @@ class SigninModal extends Component {
           modal: !this.state.modal
         });
     }
-
   render() {
     const { onChange, onSubmit, user_id, user_password } = this.props;
     const { handleOnClick, state } = this
+    
     return (
       <div>
         <Button color="success" onClick={handleOnClick}>Sing in</Button>
