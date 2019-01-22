@@ -13,6 +13,7 @@ const initialState = Map({
 export default handleActions({
     [SET_CURRENT_USER]: (state,action) => {
         const {user_id, token} = action.payload
+        console.log(action.payload)
         return state.set('user_id',user_id).set('token',token)
     }
 },initialState)

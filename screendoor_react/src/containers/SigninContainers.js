@@ -14,6 +14,7 @@ class SigninContainers extends Component {
     
     
     handleSubmit = async (e) => {
+      const {userActions} = this.props;
         e.preventDefault();
         const {user_id, user_password} = this.props
         const user = {
@@ -28,7 +29,6 @@ class SigninContainers extends Component {
             body: JSON.stringify(user),
           });
           const body = await response.json();
-        console.log(body.token)
         userActions.setCurrentUser(body);
     }
 
