@@ -6,11 +6,9 @@ const passportConfig = require('./passports/localPassport');
 const signup = require('./router/signup.js');
 const signin = require('./router/signin.js');
 const authtest = require('./router/authtest.js');
-var flash = require('connect-flash');
 const bodyParser = require('body-Parser')
 const jwtconfig = require('./jwt/config')
 
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json())

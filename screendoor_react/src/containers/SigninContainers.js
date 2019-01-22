@@ -3,6 +3,7 @@ import SigninModal from '../components/SigninModal'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as signinActions from '../modules/signinUser'
+import * as userActions from '../modules/currentUser'
 
 class SigninContainers extends Component {
 
@@ -12,9 +13,23 @@ class SigninContainers extends Component {
     }
     
     
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        signinActions.postSignInUser();
+        const {user_id, user_password} = this.props
+        const user = {
+            user_id: user_id,
+            user_password: user_password,
+        }
+        const response = await fetch('/api/signin', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+          });
+          const body = await response.json();
+        console.log(body.token)
+        userActions.setCurrentUser(body);
     }
 
   render() {
@@ -36,6 +51,7 @@ export default connect(
       user_password:state.signinUser.get('user_password'),
     }),
     (dispatch) => ({
-      signinActions: bindActionCreators(signinActions,dispatch)
+      signinActions: bindActionCreators(signinActions,dispatch),
+      userActions: bindActionCreators(userActions,dispatch)
     })
 )(SigninContainers)

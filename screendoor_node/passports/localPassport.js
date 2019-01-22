@@ -18,14 +18,16 @@ module.exports = (passport) => {
     passwordField: 'user_password',
     passReqToCallback: true,
   }, (req,user_id, user_password, done) => {
+    console.log(user_id)
+    console.log(user_password)
     User.find({ user_id: user_id, user_password:user_password }, (err, user) => {
       if (err) return done(err); // 서버 에러 처리
-      if (!user) return done(null, false, req.flash('signinMessage','login failure')); // 임의 에러 처리
+      if (!user) return done(null, false); // 임의 에러 처리
       else{
         if(user.length > 0){
           return done(null,user);
         }else{
-          return done(null, false, req.flash('signinMessage','login failure'));
+          return done(null, false);
         }
       }
     })
@@ -39,7 +41,7 @@ module.exports = (passport) => {
     const { user_name, user_age, user_git_id} =req.body
     User.findOne({"user_id":user_id}, (err,user) => {
         if(err) return done(err);
-        if(user) return done(null,false,req.flash('signupMessage','이메일이 존재합니다.'))
+        if(user) return done(null,false)
         else{
             var newUser = new User({
                 "user_id" : user_id ,

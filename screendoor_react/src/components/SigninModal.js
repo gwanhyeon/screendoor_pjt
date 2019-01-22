@@ -20,7 +20,7 @@ class SigninModal extends Component {
       <div>
         <Button color="success" onClick={handleOnClick}>Sing in</Button>
         <Modal isOpen={state.modal} toggle={handleOnClick} className="modal-dialog">
-        <form onSubmit={onSubmit}>
+        <form>
           <ModalHeader toggle={this.handleOnClick}>Sign in</ModalHeader>
           <ModalBody>
             <FormGroup>
@@ -33,7 +33,7 @@ class SigninModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button type="submit" color="success">Sign in</Button>{' '}
+            <Button onClick={onSubmit} type="submit" color="success">Sign in</Button>{' '}
             <Button color="secondary" onClick={handleOnClick}>Cancel</Button>
           </ModalFooter>
           </form>
