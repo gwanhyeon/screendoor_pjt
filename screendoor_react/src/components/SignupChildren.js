@@ -2,9 +2,8 @@ import React from 'react'
 
 const SignupChildren = ({onSubmit, onChange, user_id, user_password, user_age, user_git_id}) => {
     
-    
-    
     return (
+    
     <form onSubmit={onSubmit} >
         <div className="form-group">
           <label htmlFor="user_id">ID</label>
@@ -25,6 +24,8 @@ const SignupChildren = ({onSubmit, onChange, user_id, user_password, user_age, u
         </div>
         <button type="submit" className="btn btn-success">Submit</button>
       </form>
+
+      
     )
 }
 
