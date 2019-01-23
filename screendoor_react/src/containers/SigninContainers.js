@@ -7,8 +7,10 @@ import * as userActions from '../modules/currentUser'
 
 
 class SigninContainers extends Component {
-
+    
+    
     handleChange = (e) => {
+        
         const {signinActions} = this.props;
         signinActions.setSignInUser({'property':e.target.name,'value':e.target.value})
     }
@@ -28,20 +30,23 @@ class SigninContainers extends Component {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(user),
-          });
+        });
           const body = await response.json();
           console.log("여기바디"+body);
+          console.log("여기바디"+body.status);
           
           signinActions.postSignInUser(body);
-          userActions.setCurrentUser(body);
+          userActions.setCurrentUser(body);  
+          if(body.status === 200){
+         alert(user_id +"님 로그인 되었습니다.")
+          }else if(body.status === 401){
+            alert(body.status +"로그인 실패 되었습니다.")
+          }else if(body.status === 501){
+            alert(body.status +"Connection Error")
+          }
     }
-    //WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
-    componentWillUpdate(nextProps, nextState) {
-      
-    }
-    componentDidUpdate(prevProps, prevState) {
-      signinActions.postSignInUser(prevState);
-    }
+    
+    
     
 
   render() {
