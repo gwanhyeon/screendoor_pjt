@@ -39,6 +39,7 @@ module.exports = (passport) => {
     passReqToCallback: true,},
     (req,user_id, user_password, done) => {
     const { user_name, user_age, user_git_id} =req.body
+    console.log(req.body)
     User.findOne({"user_id":user_id}, (err,user) => {
         if(err) return done(err);
         if(user) return done(null,false)

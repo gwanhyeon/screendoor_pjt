@@ -15,6 +15,7 @@ class SignupContainers extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const {signupActions} = this.props;
     const {user_id, user_password, user_age, user_git_id} = this.props
     const user = {
         user_id: user_id,
@@ -22,7 +23,7 @@ class SignupContainers extends Component {
         user_age: user_age,
         user_git_id: user_git_id
     }
-    const response = await fetch('/api/signin', {
+    const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,6 +31,7 @@ class SignupContainers extends Component {
         body: JSON.stringify(user),
       });
       const body = await response.json();
+      signupActions.postSignUpUser(body)
 }
  
   render() {
