@@ -35,7 +35,7 @@ class SignupContainers extends Component {
       const body = await response.json();
 
 
-      // console.log("this.result" + this.state.result);
+      
       console.log("this.body" + body);
       signupActions.postSignUpUser(body)
       // console.log(signupActions.postSignUpUser(body.status));

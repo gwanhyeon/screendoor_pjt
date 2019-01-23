@@ -31,9 +31,18 @@ class SigninContainers extends Component {
           });
           const body = await response.json();
           console.log("여기바디"+body);
+          
           signinActions.postSignInUser(body);
           userActions.setCurrentUser(body);
     }
+    //WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
+    componentWillUpdate(nextProps, nextState) {
+      
+    }
+    componentDidUpdate(prevProps, prevState) {
+      signinActions.postSignInUser(prevState);
+    }
+    
 
   render() {
     const { handleChange, handleSubmit } = this

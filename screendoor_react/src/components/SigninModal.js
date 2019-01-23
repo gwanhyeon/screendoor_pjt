@@ -12,22 +12,28 @@ class SigninModal extends Component {
           modal: !this.state.modal
         });
     }
+   
+  
+  
   render() {
     const { onChange, onSubmit, user_id, user_password,result } = this.props;
     const { handleOnClick, state } = this
-    var view =null;
+    let view =null;
     console.log("여기 로그인하는부분이야"+result)
-    if(result === 200){
-      alert('로그인에 성공하셨습니다.')
-    }else if(result === 401){
-      alert('로그인에 실패하셨습니다.')
-    }
+      
+      if(result === 200){
+        state.modal = false; 
+      }else if(result === 401){
+        state.modal = true;
+      }
+    
+    
     return (
       <div>
         <Button color="success" onClick={handleOnClick}>Sing in</Button>
         <Modal isOpen={state.modal} toggle={handleOnClick} className="modal-dialog">
         <form>
-          <ModalHeader toggle={this.handleOnClick}>Sign in</ModalHeader>
+          <ModalHeader toggle={handleOnClick}>Sign in</ModalHeader>
           <ModalBody>
             <FormGroup>
                 <Label for="exampleEmail">ID</Label>
