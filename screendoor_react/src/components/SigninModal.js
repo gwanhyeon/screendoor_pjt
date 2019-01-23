@@ -12,22 +12,11 @@ class SigninModal extends Component {
           modal: !this.state.modal
         });
     }
-   
-  
   
   render() {
     const { onChange, onSubmit, user_id, user_password,result } = this.props;
     const { handleOnClick, state } = this
-    let view =null;
-    console.log("여기 로그인하는부분이야"+result)
-      
-      if(result === 200){
-        state.modal = false; 
-      }else if(result === 401){
-        state.modal = true;
-      }
-    
-    
+
     return (
       <div>
         <Button color="success" onClick={handleOnClick}>Sing in</Button>
@@ -45,7 +34,7 @@ class SigninModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onSubmit} type="submit" color="success">Sign in</Button>{' '}
+            <Button onClick={onSubmit} type="submit" color="success" >Sign in</Button>{' '}
             <Button color="secondary" onClick={handleOnClick}>Cancel</Button>
           </ModalFooter>
           </form>
