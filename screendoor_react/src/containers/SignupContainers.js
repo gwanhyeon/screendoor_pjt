@@ -9,13 +9,7 @@ import { Button } from 'reactstrap';
 import SignupSuccess from '../components/SignupSuccess';
 import SignupFailure from '../components/SignupFailure';
 class SignupContainers extends Component {
-  state = {
-    user_id: '',
-    user_password: '',
-    user_age: null,
-    user_git_id: '',
-    result: null
-  }
+
   handleChange = (e) => {
     const {signupActions} = this.props;
     signupActions.setSignUpUser({'property':e.target.name,'value':e.target.value})
@@ -41,7 +35,7 @@ class SignupContainers extends Component {
       const body = await response.json();
 
 
-      console.log("this.result" + this.state.result);
+      // console.log("this.result" + this.state.result);
       console.log("this.body" + body);
       signupActions.postSignUpUser(body)
       // console.log(signupActions.postSignUpUser(body.status));

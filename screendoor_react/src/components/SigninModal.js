@@ -13,9 +13,15 @@ class SigninModal extends Component {
         });
     }
   render() {
-    const { onChange, onSubmit, user_id, user_password } = this.props;
+    const { onChange, onSubmit, user_id, user_password,result } = this.props;
     const { handleOnClick, state } = this
-    
+    var view =null;
+    console.log("여기 로그인하는부분이야"+result)
+    if(result === 200){
+      alert('로그인에 성공하셨습니다.')
+    }else if(result === 401){
+      alert('로그인에 실패하셨습니다.')
+    }
     return (
       <div>
         <Button color="success" onClick={handleOnClick}>Sing in</Button>
