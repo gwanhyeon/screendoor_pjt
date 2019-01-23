@@ -1,7 +1,9 @@
 import React from 'react'
 
 const SignupChildren = ({onSubmit, onChange, user_id, user_password, user_age, user_git_id}) => {
-
+    
+    
+    
     return (
     <form onSubmit={onSubmit} >
         <div className="form-group">
