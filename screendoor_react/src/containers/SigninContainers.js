@@ -3,6 +3,7 @@ import SigninModal from '../components/SigninModal'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as signinActions from '../modules/signinUser'
+import * as userActions from '../modules/currentUser'
 
 class SigninContainers extends Component {
 
@@ -12,15 +13,24 @@ class SigninContainers extends Component {
     }
     
     
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
+      const {userActions} = this.props;
         e.preventDefault();
         const {user_id, user_password} = this.props
         const user = {
             user_id: user_id,
             user_password: user_password,
         }
-        //나중에 여기다가 node 연결하는 리듀서 만들어서 넣으면됨
-        console.log(this.props);
+        const response = await fetch('/api/signin', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+          });
+          const body = await response.json();
+          userActions.setCurrentUser(body);
+
     }
 
   render() {
@@ -42,6 +52,7 @@ export default connect(
       user_password:state.signinUser.get('user_password'),
     }),
     (dispatch) => ({
-      signinActions: bindActionCreators(signinActions,dispatch)
+      signinActions: bindActionCreators(signinActions,dispatch),
+      userActions: bindActionCreators(userActions,dispatch)
     })
 )(SigninContainers)

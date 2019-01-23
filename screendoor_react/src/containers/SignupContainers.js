@@ -13,18 +13,24 @@ class SignupContainers extends Component {
   }
 
 
-  handleSubmit = (e) => {
-      e.preventDefault();
-      const {user_id, user_password, user_age, user_git_id} = this.props
-      const user = {
-          user_id: user_id,
-          user_password: user_password,
-          user_age:user_age,
-          user_git_id:user_git_id
-      }
-      //나중에 여기다가 node 연결하는 리듀서 만들어서 넣으면됨
-      console.log(this.props);
- }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const {user_id, user_password, user_age, user_git_id} = this.props
+    const user = {
+        user_id: user_id,
+        user_password: user_password,
+        user_age: user_age,
+        user_git_id: user_git_id
+    }
+    const response = await fetch('/api/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      const body = await response.json();
+}
  
   render() {
     const {handleSubmit, handleChange} = this
