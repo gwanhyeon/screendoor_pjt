@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SignupChildren = ({onSubmit, onChange, user_id, user_password, user_age, user_git_id}) => {
+const SignupChildren = ({onSubmit, onChange, user_id, user_password, user_name, user_git_id}) => {
     
     return (
     <form onSubmit={onSubmit} >
@@ -13,8 +13,8 @@ const SignupChildren = ({onSubmit, onChange, user_id, user_password, user_age, u
           <input type="password" className="form-control" name="user_password" placeholder="Enter Password" onChange={onChange} value={user_password}/>
         </div>
         <div className="form-group">
-          <label htmlFor="user_age">Age</label>
-          <input type="text" className="form-control" name="user_age" placeholder="Enter your age" onChange={onChange} value={user_age}/>
+          <label htmlFor="user_name">Name</label>
+          <input type="text" className="form-control" name="user_name" placeholder="Enter your name" onChange={onChange} value={user_name}/>
         </div>
         <div className="form-group">
           <label htmlFor="user_git_id">Github</label>
