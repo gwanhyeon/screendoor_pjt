@@ -4,21 +4,25 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as signinActions from '../modules/signinUser'
 import * as userActions from '../modules/currentUser'
+import * as modalActions from '../modules/modalCtrl'
 
 
 class SigninContainers extends Component {
     
+    handleOnClick = () => {
+      const {modalActions, modal} = this.props;
+      modalActions.setModal({'modal':!modal})
+    }
     
     handleChange = (e) => {
-        
-        const {signinActions} = this.props;
-        signinActions.setSignInUser({'property':e.target.name,'value':e.target.value})
+      const {signinActions} = this.props;
+      signinActions.setSignInUser({'property':e.target.name,'value':e.target.value})
     }
   
     handleSubmit = async (e) => {
       e.preventDefault();
-      const {userActions,signinActions} = this.props;
-      const {user_id, user_password,result} = this.props;
+      const {userActions,signinActions,modalActions} = this.props;
+      const {user_id, user_password,result,modal} = this.props;
       const user = {
             user_id: user_id,
             user_password: user_password,
@@ -32,33 +36,25 @@ class SigninContainers extends Component {
             body: JSON.stringify(user),
         });
           const body = await response.json();
-          console.log("여기바디"+body);
-          console.log("여기바디"+body.status);
           
           signinActions.postSignInUser(body);
-          userActions.setCurrentUser(body);  
-          if(body.status === 200){
-         alert(user_id +"님 로그인 되었습니다.")
-          }else if(body.status === 401){
-            alert(body.status +"로그인 실패 되었습니다.")
-          }else if(body.status === 501){
-            alert(body.status +"Connection Error")
-          }
+          if(body.status === 200)
+            modalActions.setModal({'modal':!modal})
+            userActions.setCurrentUser(body);
     }
     
-    
-    
-
   render() {
-    const { handleChange, handleSubmit } = this
-    const { user_id, user_password,result} = this.props
-    console.log("여기는 SigninContainers"+result)
+    const { handleChange, handleSubmit, handleOnClick } = this
+    const { user_id, user_password, modal, result} = this.props
     return (
+      
       <SigninModal
         onSubmit={handleSubmit}
         onChange={handleChange}
+        onClick={handleOnClick}
         user_id={user_id}
         user_password={user_password}
+        modal={modal}
         result={result}/>
     )
   }
@@ -68,10 +64,12 @@ export default connect(
     (state) => ({
       user_id: state.signinUser.get('user_id'),
       user_password:state.signinUser.get('user_password'),
-      result: state.signinUser.get('result')
+      result: state.signinUser.get('result'),
+      modal: state.modalCtrl.get('modal')
     }),
     (dispatch) => ({
       signinActions: bindActionCreators(signinActions,dispatch),
-      userActions: bindActionCreators(userActions,dispatch)
+      userActions: bindActionCreators(userActions,dispatch),
+      modalActions: bindActionCreators(modalActions,dispatch),
     })
 )(SigninContainers)

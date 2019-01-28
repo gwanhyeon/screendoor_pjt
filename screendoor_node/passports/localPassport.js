@@ -38,7 +38,7 @@ module.exports = (passport) => {
     passwordField: 'user_password',
     passReqToCallback: true,},
     (req,user_id, user_password, done) => {
-    const { user_name, user_age, user_git_id} =req.body
+    const { user_name, user_git_id} =req.body
     console.log(req.body)
     User.findOne({"user_id":user_id}, (err,user) => {
         if(err) return done(err);
@@ -48,7 +48,6 @@ module.exports = (passport) => {
                 "user_id" : user_id ,
                 "user_password" : user_password,
                 "user_name": user_name,
-                "user_age": user_age,
                 "user_git_id" : user_git_id});
             newUser.save((err)=>{
                 if(err)

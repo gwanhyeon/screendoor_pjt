@@ -6,8 +6,8 @@ import { bindActionCreators } from 'redux';
 import * as signupActions from '../modules/signupUser'
 import { Button } from 'reactstrap';
 
-import SignupSuccess from '../components/SignupSuccess';
-import SignupFailure from '../components/SignupFailure';
+import SuccessAlert from '../components/SuccessAlert';
+import FailureAlert from '../components/FailureAlert';
 class SignupContainers extends Component {
 
   handleChange = (e) => {
@@ -17,11 +17,11 @@ class SignupContainers extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const {signupActions} = this.props;
-    const {user_id, user_password, user_age, user_git_id,result} = this.props
+    const {user_id, user_password, user_name, user_git_id,result} = this.props
     const user = {
         user_id: user_id,
         user_password: user_password,
-        user_age: user_age,
+        user_name: user_name,
         user_git_id: user_git_id,
         result: result
     }
@@ -44,36 +44,31 @@ class SignupContainers extends Component {
  
   render() {
     const {handleSubmit, handleChange} = this
-    const { user_id, user_password, user_age, user_git_id,result} = this.props
-    
+    const {signupActions} = this.props;
+    const { user_id, user_password, user_name, user_git_id,result} = this.props
     let view = null;
     // ID 존재하지 않아 회원가입 완료된 경우200 응답을 받았을 경우
     if(result === 200){
-      view = <SignupSuccess></SignupSuccess>
+      signupActions.clrSignUpUser();
+      view = <SuccessAlert name="회원가입"/>
     }// ID 존재하는 경우
-    else if(result === 401){
-      view = <SignupFailure></SignupFailure>
+    else if(result === 401 || result === 502){
+      view = <FailureAlert name="회원가입"/>
     }
     // 응답받지 않았을경우 기존 폼 뿌려준다. 
-    else{
-      view = 
-        <SignupJumbo>
+    
+    
+    return(
+      <SignupJumbo>
+        {view}
         <SignupChildren
           onSubmit={handleSubmit}
           onChange={handleChange}
           user_id={user_id}
           user_password={user_password}
-          user_age={user_age}
-          user_git_id={user_git_id}
-          result={result}/>
-         </SignupJumbo>
-    }
-    
-    
-    return(
-      <div>
-        {view}
-      </div>
+          user_name={user_name}
+          user_git_id={user_git_id}/>
+      </SignupJumbo>
     
     
     );
@@ -84,7 +79,7 @@ export default connect(
   (state) => ({
     user_id: state.signupUser.get('user_id'),
     user_password:state.signupUser.get('user_password'),
-    user_age:state.signupUser.get('user_age'),
+    user_name:state.signupUser.get('user_name'),
     user_git_id:state.signupUser.get('user_git_id'),
     result:state.signupUser.get('result')
     
