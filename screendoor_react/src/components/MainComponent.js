@@ -3,37 +3,43 @@ import logo from '../images/logo.png'
 import SigninContainer from '../containers/SigninContainers'
 import * as Gotham from '../fontStyle.css'
 import { Container,Row,Col } from 'reactstrap'
-
-
-
-
-const NevigtaionBar = () => {
+import mainbg from '../images/mainbg_2.png'
+import SignupContainer from '../containers/SignupContainers'
+import About from './About'
+import Board from './Board'
+const margin = {
+    "marginTop": "80px"
+  }
+const MainComponent = () => {
 
     return (
-        
+        <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
         id="nav-scroll">
-
-         <ul class="nav nav-pills">
-         <li class="nav-item">
-            <a class="nav-link" href="#home">@fat</a>
-         </li>
-         <li class="nav-item">
-            <a class="nav-link" href="#about">@mdo</a>
-         </li>
-         </ul>
             <div className="container">
             <a style={Gotham} className="navbar-brand" href="#"><img src={logo} width="30" height="30" alt="screen door"/>SCREEN DOOR</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav nav justify-content-center">
-                    <a style={Gotham} className="nav-item nav-link" href="#home">Home</a>
+                
+                <ul className="nav justify-content-center">
+                 <li class="active" className="nav-item">
+                 <a className="nav-link" href="#home">home</a>
+                </li>
+                <li className="nav-item">
+                <a className="nav-link" href="#about">about</a>
+                </li>
+                <li className="nav-item">
+                <a className="nav-link" href="#board">board</a>
+                </li>
+                </ul>
+                
+                    {/* <a style={Gotham} className="nav-item nav-link" href="#home">Home</a>
                     <a style={Gotham} className="nav-item nav-link" href="#about">About</a>
                     <a style={Gotham} className="nav-item nav-link" href="#board">Board</a>
                     {/* <a style={Gotham} className="nav-item nav-link nav-light" href="#" tabIndex="-1" aria-disabled="true">Disabled</a> */}
-                </div>
+                
             </div>
             <form className="form-inline">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -43,8 +49,29 @@ const NevigtaionBar = () => {
             <SigninContainer/>
             </div>
         </nav>
-       
+      
+        <div data-spy="scroll" data-target="#nav-scroll" data-offset="0">
+        <h4 id="home">@home</h4>
+        <Container fluid={true} className="bg-dark">
+            <Row>
+                <Col xs="4" style={{"marginTop":"10%","marginLeft":"20%"}}>
+                    <img src={mainbg}/>
+                </Col>
+                <Col xs="3" style={margin}>
+                    <SignupContainer/>
+                </Col>
+            </Row>
+        </Container>
+        
+        <h4 id="about">@about</h4>
+        <About></About>
+
+        <h4 id="board">@board</h4>
+        <Board></Board>
+        </div>
+        </Fragment>
+        
     )
 }
 
-export default NevigtaionBar;
+export default MainComponent;
