@@ -16,7 +16,8 @@ export default handleActions({
         const {property, value} = action.payload;
         return state.set(property,value)
         
-    },[POST_SIGNIN_USER]: (state,action) => {
+    },
+    [POST_SIGNIN_USER]: (state,action) => {
         console.log(action.payload)
         const {status} = action.payload;
         return state.set('result',status)
