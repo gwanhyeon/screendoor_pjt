@@ -24,7 +24,7 @@ const MainComponent = () => {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 
                 <ul className="nav justify-content-center">
-                 <li class="active" className="nav-item">
+                 <li className="nav-item">
                  <a className="nav-link" href="#home">home</a>
                 </li>
                 <li className="nav-item">

@@ -11,7 +11,6 @@ const initialState = Map({
 export default handleActions({
     [SET_MODAL]: (state,action) => {
         const {modal} = action.payload;
-        console.log(modal)
         return state.set('modal',modal)
     }
 },initialState)
