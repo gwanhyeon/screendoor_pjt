@@ -63,11 +63,8 @@ const MainComponent = () => {
             </Row>
         </Container>
         
-        <h4 id="about">@about</h4>
+        <h4 align="center" className="display-4" id="about">About Us</h4>
         <About></About>
-
-        <h4 id="board">@board</h4>
-        <Board></Board>
         </div>
         </Fragment>
         
