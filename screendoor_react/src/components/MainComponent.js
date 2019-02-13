@@ -6,7 +6,9 @@ import { Container,Row,Col } from 'reactstrap'
 import mainbg from '../images/mainbg_2.png'
 import SignupContainer from '../containers/SignupContainers'
 import About from './About'
-import Board from './Board'
+import Features from './Features'
+import Footer from './Footer'
+
 const margin = {
     "marginTop": "80px"
   }
@@ -31,14 +33,9 @@ const MainComponent = () => {
                 <a className="nav-link" href="#about">about</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="#board">board</a>
+                <a className="nav-link" href="#feature">feature</a>
                 </li>
                 </ul>
-                
-                    {/* <a style={Gotham} className="nav-item nav-link" href="#home">Home</a>
-                    <a style={Gotham} className="nav-item nav-link" href="#about">About</a>
-                    <a style={Gotham} className="nav-item nav-link" href="#board">Board</a>
-                    {/* <a style={Gotham} className="nav-item nav-link nav-light" href="#" tabIndex="-1" aria-disabled="true">Disabled</a> */}
                 
             </div>
             <form className="form-inline">
@@ -62,10 +59,14 @@ const MainComponent = () => {
                 </Col>
             </Row>
         </Container>
-        
-        <h4 align="center" className="display-4" id="about">About Us</h4>
-        <About></About>
+        <Container style={{marginTop:20}} id="about">
+        <h4 align="center" className="display-4">About Us</h4>
+        <About/>
+        <hr class="featurette-divider" id="feature"></hr>
+        </Container>
+        <Features/>
         </div>
+        <Footer/>
         </Fragment>
         
     )
