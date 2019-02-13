@@ -37,11 +37,6 @@ const MainComponent = () => {
                 </li>
                 </ul>
                 
-                    {/* <a style={Gotham} className="nav-item nav-link" href="#home">Home</a>
-                    <a style={Gotham} className="nav-item nav-link" href="#about">About</a>
-                    <a style={Gotham} className="nav-item nav-link" href="#board">Board</a>
-                    {/* <a style={Gotham} className="nav-item nav-link nav-light" href="#" tabIndex="-1" aria-disabled="true">Disabled</a> */}
-                
             </div>
             <form className="form-inline">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -64,8 +59,8 @@ const MainComponent = () => {
                 </Col>
             </Row>
         </Container>
-        <Container style={{marginTop:20}}>
-        <h4 align="center" className="display-4" id="about">About Us</h4>
+        <Container style={{marginTop:20}} id="about">
+        <h4 align="center" className="display-4">About Us</h4>
         <About/>
         <hr class="featurette-divider" id="feature"></hr>
         </Container>
