@@ -6,7 +6,9 @@ import { Container,Row,Col } from 'reactstrap'
 import mainbg from '../images/mainbg_2.png'
 import SignupContainer from '../containers/SignupContainers'
 import About from './About'
-import Board from './Board'
+import Features from './Features'
+import Footer from './Footer'
+
 const margin = {
     "marginTop": "80px"
   }
@@ -31,7 +33,7 @@ const MainComponent = () => {
                 <a className="nav-link" href="#about">about</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="#board">board</a>
+                <a className="nav-link" href="#feature">feature</a>
                 </li>
                 </ul>
                 
@@ -62,10 +64,14 @@ const MainComponent = () => {
                 </Col>
             </Row>
         </Container>
-        
+        <Container style={{marginTop:20}}>
         <h4 align="center" className="display-4" id="about">About Us</h4>
-        <About></About>
+        <About/>
+        <hr class="featurette-divider" id="feature"></hr>
+        </Container>
+        <Features/>
         </div>
+        <Footer/>
         </Fragment>
         
     )

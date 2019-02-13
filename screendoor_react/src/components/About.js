@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import taeil from '../images/taeil.jpg'
 import gwanhyeon from '../images/gwanhyeon.jpg'
-import gotham from '../fonts/Gotham Light Regular.otf'
 import linkedin from '../images/linkedin.svg'
 import github from '../images/github.svg'
 import instagram from '../images/instagram.svg'
 
 class About extends Component {
     render() {
-        const fontFamily = {
-            fontFamily:{gotham}
-        }
         return (
-            <Container style={{marginTop:20}}>
             <Row>
                 <Col align="center" lg="4">
                 <img  className="rounded-circle"
@@ -67,7 +62,6 @@ class About extends Component {
                 </Col>
 
             </Row>
-            </Container>
         );
     }
 }
